@@ -1,0 +1,35 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.bookerdimaio.sandbox"
+    },
+    "jhipsterVersion": "6.1.2",
+    "applicationType": "microservice",
+    "baseName": "microservice1",
+    "packageName": "com.bookerdimaio.sandbox",
+    "packageFolder": "com/bookerdimaio/sandbox",
+    "serverPort": "8081",
+    "authenticationType": "jwt",
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "NjcxOTE4NzZlMzhjMDk5ZDkwZjgwZWY0ZWMxMzYzNDBjYjhhMWRhNTdmZjlkYzZlODBkYTIzZGFiMDlhNzQ5YzFiMDNhMDdjODI2MDNhN2FjMDQ4YjhlZWU2NmNhNDlmMWM1MmMzOWJkY2YyZmYyMDQ0NmJiYjhmZDQzZmFmYWE=",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "clientPackageManager": "npm",
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}
