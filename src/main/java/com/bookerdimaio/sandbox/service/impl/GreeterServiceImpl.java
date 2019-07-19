@@ -77,6 +77,13 @@ public class GreeterServiceImpl implements GreeterService {
             .map(greeterMapper::toDto);
     }
 
+    @Transactional(readOnly = true)
+    public Optional<GreeterDTO> findOne(String firstName, String lastName) {
+        log.debug("Request to get Greeter: {0}, {1}", firstName, lastName);
+        return greeterRepository.findByName(firstName, lastName)
+            .map(greeterMapper::toDto);
+    }
+
     /**
      * Delete the greeter by id.
      *

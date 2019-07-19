@@ -104,6 +104,20 @@ public class GreeterResource {
     }
 
     /**
+     * {@code GET /greeters} : get the "first name" and "last name" greeter.
+     * 
+     * @param firstName the first name of the greeterDTO to retrieve.
+     * @param lastName the last name of the greeterDTO to retrieve.
+     * @return the {@link ResponseEntity} with the status {@code 200 (OK)} and with body the greeterDTO, or with status {@code 404 (Not Found)}.
+     */
+    @GetMapping("/greeters/find")
+    public ResponseEntity<GreeterDTO> getGreeter(@RequestParam String firstName, @RequestParam String lastName) {
+        log.debug("REST request to get Greeter : {0} {1}", firstName, lastName);
+        Optional<GreeterDTO> greeterDTO = greeterService.findOne(firstName, lastName);
+        return ResponseUtil.wrapOrNotFound(greeterDTO);
+    }
+
+    /**
      * {@code DELETE  /greeters/:id} : delete the "id" greeter.
      *
      * @param id the id of the greeterDTO to delete.

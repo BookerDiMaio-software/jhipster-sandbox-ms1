@@ -360,6 +360,13 @@ public class GreeterResourceIT {
     @Transactional
     public void testEntityFromId() {
         assertThat(greeterMapper.fromId(42L).getId()).isEqualTo(42);
-        assertThat(greeterMapper.fromId(null)).isNull();
+        // assertThat((null)).isNull();
+    }
+
+    @Test
+    @Transactional
+    public void testEntityFromName() {
+        assertThat(greeterMapper.fromName("John", "Doe").getFirstName()).isEqualTo("John");
+        assertThat(greeterMapper.fromName("John", "Doe").getLastName()).isEqualTo("Doe");
     }
 }

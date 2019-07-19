@@ -35,6 +35,15 @@ public interface GreeterService {
     Optional<GreeterDTO> findOne(Long id);
 
     /**
+     * get the "first name" "last name": greeter.
+     * "
+     * @param firstName the first name of the entity.
+     * @param lastName the last name of the entity.
+     * @return the entity.
+     */
+    Optional<GreeterDTO> findOne(String firstName, String lastName);
+
+    /**
      * Delete the "id" greeter.
      *
      * @param id the id of the entity.
