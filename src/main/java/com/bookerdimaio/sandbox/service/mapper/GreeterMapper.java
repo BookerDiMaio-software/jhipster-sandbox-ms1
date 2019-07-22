@@ -19,14 +19,4 @@ public interface GreeterMapper extends EntityMapper<GreeterDTO, Greeter> {
         greeter.setId(id);
         return greeter;
     }
-
-    default Greeter fromName(String firstName, String lastName) {
-        if (firstName.isEmpty() || lastName.isEmpty()) {
-            return null;
-        }
-        Greeter greeter = new Greeter();
-        greeter.setFirstName(firstName);
-        greeter.setLastName(lastName);
-        return greeter;
-    }
 }

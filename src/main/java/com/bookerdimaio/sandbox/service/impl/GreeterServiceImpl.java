@@ -62,7 +62,6 @@ public class GreeterServiceImpl implements GreeterService {
             .collect(Collectors.toCollection(LinkedList::new));
     }
 
-
     /**
      * Get one greeter by id.
      *
@@ -77,10 +76,17 @@ public class GreeterServiceImpl implements GreeterService {
             .map(greeterMapper::toDto);
     }
 
+    /**
+     * Get one greeter by first name and last name.
+     * 
+     * @param firstName the first name of the entity.
+     * @param lastName the last name of the entity.
+     * @return the entity.
+     */
     @Transactional(readOnly = true)
-    public Optional<GreeterDTO> findOne(String firstName, String lastName) {
+    public Optional<GreeterDTO> findGreeter(String firstName, String lastName) {
         log.debug("Request to get Greeter: {0}, {1}", firstName, lastName);
-        return greeterRepository.findByName(firstName, lastName)
+        return greeterRepository.findGreeter(firstName, lastName)
             .map(greeterMapper::toDto);
     }
 

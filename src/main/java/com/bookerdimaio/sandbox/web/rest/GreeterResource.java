@@ -1,5 +1,7 @@
 package com.bookerdimaio.sandbox.web.rest;
 
+import com.bookerdimaio.sandbox.domain.Greeter;
+import com.bookerdimaio.sandbox.repository.GreeterRepository;
 import com.bookerdimaio.sandbox.service.GreeterService;
 import com.bookerdimaio.sandbox.web.rest.errors.BadRequestAlertException;
 import com.bookerdimaio.sandbox.service.dto.GreeterDTO;
@@ -18,6 +20,8 @@ import java.net.URISyntaxException;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 /**
  * REST controller for managing {@link com.bookerdimaio.sandbox.domain.Greeter}.
@@ -113,7 +117,7 @@ public class GreeterResource {
     @GetMapping("/greeters/find")
     public ResponseEntity<GreeterDTO> getGreeter(@RequestParam String firstName, @RequestParam String lastName) {
         log.debug("REST request to get Greeter : {0} {1}", firstName, lastName);
-        Optional<GreeterDTO> greeterDTO = greeterService.findOne(firstName, lastName);
+        Optional<GreeterDTO> greeterDTO = greeterService.findGreeter(firstName, lastName);
         return ResponseUtil.wrapOrNotFound(greeterDTO);
     }
 
