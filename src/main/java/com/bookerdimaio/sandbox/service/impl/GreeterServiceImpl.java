@@ -78,7 +78,7 @@ public class GreeterServiceImpl implements GreeterService {
 
     /**
      * Get one greeter by first name and last name.
-     * 
+     *
      * @param firstName the first name of the entity.
      * @param lastName the last name of the entity.
      * @return the entity.
@@ -87,6 +87,18 @@ public class GreeterServiceImpl implements GreeterService {
     public Optional<GreeterDTO> findGreeter(String firstName, String lastName) {
         log.debug("Request to get Greeter: {0}, {1}", firstName, lastName);
         return greeterRepository.findGreeter(firstName, lastName)
+            .map(greeterMapper::toDto);
+    }
+
+    /**
+     * Get one greeter alphabetical last name (first).
+     *
+     * @return the entity.
+     */
+    @Transactional(readOnly = true)
+    public Optional<GreeterDTO> findFirstByOrderByLastNameAsc() {
+        log.debug("Request to get firse alpha-last name  Greeter");
+        return greeterRepository.findFirstByOrderByLastNameAsc()
             .map(greeterMapper::toDto);
     }
 
