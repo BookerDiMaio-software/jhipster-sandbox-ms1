@@ -109,7 +109,7 @@ public class GreeterResource {
 
     /**
      * {@code GET /greeters} : get the "first name" and "last name" greeter.
-     * 
+     *
      * @param firstName the first name of the greeterDTO to retrieve.
      * @param lastName the last name of the greeterDTO to retrieve.
      * @return the {@link ResponseEntity} with the status {@code 200 (OK)} and with body the greeterDTO, or with status {@code 404 (Not Found)}.
@@ -118,6 +118,18 @@ public class GreeterResource {
     public ResponseEntity<GreeterDTO> getGreeter(@RequestParam String firstName, @RequestParam String lastName) {
         log.debug("REST request to get Greeter : {0} {1}", firstName, lastName);
         Optional<GreeterDTO> greeterDTO = greeterService.findGreeter(firstName, lastName);
+        return ResponseUtil.wrapOrNotFound(greeterDTO);
+    }
+
+    /**
+     * {@code GET  /greeters/alpha-last} : get the greeter with the highest last name, sorted alphabetically.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the greeterDTO, or with status {@code 404 (Not Found)}.
+     */
+    @GetMapping("/greeters/alpha-last")
+    public ResponseEntity<GreeterDTO> getAlphaLastNameGreeter() {
+        log.debug("REST request to get alpha-highest by last name Greeter");
+        Optional<GreeterDTO> greeterDTO = greeterService.findFirstByOrderByLastNameAsc();
         return ResponseUtil.wrapOrNotFound(greeterDTO);
     }
 

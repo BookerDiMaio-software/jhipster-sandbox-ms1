@@ -43,6 +43,13 @@ public interface GreeterService {
     Optional<GreeterDTO> findGreeter(String firstName, String lastName);
 
     /**
+     * Get the alphabetically first Last Name greeter.
+     *
+     * @return the entity.
+     */
+    Optional<GreeterDTO> findFirstByOrderByLastNameAsc();
+
+    /**
      * Delete the "id" greeter.
      *
      * @param id the id of the entity.

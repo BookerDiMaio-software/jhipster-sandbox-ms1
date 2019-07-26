@@ -18,4 +18,6 @@ public interface GreeterRepository extends JpaRepository<Greeter, Long> {
 
     @Query("SELECT g FROM Greeter g WHERE g.firstName = :firstName AND g.lastName = :lastName")
     Optional<Greeter> findGreeter(@Param("firstName") String firstName, @Param("lastName") String lastName);
+
+    Optional<Greeter> findFirstByOrderByLastNameAsc();
 }
